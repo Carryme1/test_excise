@@ -45,7 +45,7 @@ public class ChatPhone {
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        ChatPhone chatPhone=new ChatPhone("xxx",6379);
+        ChatPhone chatPhone=new ChatPhone("wsd-projecta.master.redis.pre.dba.unp.oyw",6379);
         chatPhone.setPwd("mbase:phoneCaptcha:");
         Jedis jds= new Jedis(chatPhone.url,chatPhone.port);
 //        jds.auth(chatPhone.getPwd());
@@ -64,7 +64,7 @@ public class ChatPhone {
                 Map map = (Map) JSONObject.toBean((JSONObject) jsonAry.get(i), HashMap.class);
                 if (null == map.get("ip"))
                     System.out.println("no message");
-                if ("192.168.1.1" == map.get("ip"))
+                if ("172.20.25.21" == map.get("ip"))
                     System.out.println(map.get("phoneCaptcha"));
             }
         }

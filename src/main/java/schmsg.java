@@ -22,7 +22,7 @@ public class schmsg extends TimerTask {
     }
 
     public static void main(String[] args){
-        ChatPhone chatPhone=new ChatPhone("xxx",6379);
+        ChatPhone chatPhone=new ChatPhone("wsd-projecta.master.redis.pre.dba.unp.oyw",6379);
         chatPhone.setPwd("mbase:phoneCaptcha:");
         jds= new Jedis(chatPhone.getUrl(),chatPhone.getPort());
         Timer t=new Timer();
