@@ -1,5 +1,4 @@
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+
 import redis.clients.jedis.Jedis;
 
 import java.io.UnsupportedEncodingException;
@@ -43,6 +42,13 @@ public class ChatPhone {
         map=new HashMap();
         map.put(phone[1],Integer.valueOf(number[1]));
     }
+//   序列化 电话号码+ip作为key,验证码是value
+    public Map<String,String> getMap(String s){
+        Map<String,String> map = new HashMap<String, String>();
+
+
+        return map;
+    }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
         ChatPhone chatPhone=new ChatPhone("wsd-projecta.master.redis.pre.dba.unp.oyw",6379);
@@ -55,22 +61,22 @@ public class ChatPhone {
 
         for(String key:keys) {
             String value = jds.get(key);
+            System.out.println(value.split("\\n"));
 
-            value=value.replace("{","[");
-            value=value.replace("}","]");
-            String utf8val = new String(value.getBytes("utf-8"), "utf-8");
-            JSONArray jsonAry = JSONArray.fromObject(utf8val);
-            for (int i = 0; i < jsonAry.size(); i++) {
-                Map map = (Map) JSONObject.toBean((JSONObject) jsonAry.get(i), HashMap.class);
-                if (null == map.get("ip"))
-                    System.out.println("no message");
-                if ("172.20.25.21" == map.get("ip"))
-                    System.out.println(map.get("phoneCaptcha"));
+//            value=value.replace("{","[");
+//            value=value.replace("}","]");
+//            String utf8val = new String(value.getBytes("utf-8"), "utf-8");
+//            JSONArray jsonAry = JSONArray.fromObject(utf8val);
+//            for (int i = 0; i < jsonAry.size(); i++) {
+//                Map map = (Map) JSONObject.toBean((JSONObject) jsonAry.get(i), HashMap.class);
+//                if (null == map.get("ip"))
+//                    System.out.println("no message");
+//                if ("172.20.25.21" == map.get("ip"))
+//                    System.out.println(map.get("phoneCaptcha"));
             }
         }
 //        String ping = jds.ping();
 
-        jds.close();
-    }
+//        jds.close();
 
 }

@@ -28,6 +28,14 @@ public class Hashing {
             return (double)((int)(this.state >>> 33) + 1) / 2.147483648E9D;
         }
     }
+
+    public int getHash(int uid){
+        return Hashing.consistentHash(uid,1024);
+    }
+
+    public int getHash(String did){
+	    return Hashing.consistentHash(did.toLowerCase().hashCode(),1024);
+    }
     
     public static void main(String[] args) {
 		int a = Hashing.consistentHash(101367, 1024);
