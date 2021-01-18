@@ -153,17 +153,19 @@ public class LeetCodetest {
     }
     public int minimumTotal(List<List<Integer>> triangle) {
         // 遍历找最小，如果最小与上层的index大于2跳过，找次小。
-        int sum = 0;
+        int sum = triangle.get(0).get(0);
         int min = 0;
-        int init=triangle.get(0).get(0);
+//        int init=triangle.get(0).get(0);
         List<Integer> list;
         for (int i=1; i<triangle.size();i++){
             list=triangle.get(i);
-            for(int j=0;j<list.size();j++){
-                if(list.get(i)<=min&&Math.abs(i-j-1)<2)
-                    min=list.get(i);
+            for(int j=0; j<list.size(); j++){
+                if(j==0)
+                    min=list.get(j);
+                if(list.get(j)<=min&&Math.abs(i-j-1)<2)
+                    min=list.get(j);
             }
-            sum =init+min;
+            sum +=min;
         }
         return sum;
     }
@@ -187,9 +189,7 @@ public class LeetCodetest {
 //        leetCodetest.findNumbers(nums);
 //        leetCodetest.minTimeToVisitAllPoints(points);
 //        leetCodetest.getDecimalValue();
-        List<List<Integer>> lists = new ArrayList<List<Integer>>();
-
-        leetCodetest.minimumTotal(lists);
+        ;
     }
 
 

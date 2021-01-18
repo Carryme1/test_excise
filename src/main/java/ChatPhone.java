@@ -53,7 +53,7 @@ public class ChatPhone {
     public static void main(String[] args) throws UnsupportedEncodingException {
         ChatPhone chatPhone=new ChatPhone("wsd-projecta.master.redis.pre.dba.unp.oyw",6379);
         chatPhone.setPwd("mbase:phoneCaptcha:");
-        Jedis jds= new Jedis(chatPhone.url,chatPhone.port);
+        Jedis jds= new Jedis(chatPhone.getUrl(),chatPhone.getPort());
 //        jds.auth(chatPhone.getPwd());
         Set<String> keys= jds.keys("mbase:*");
         if (keys.size()==0)
